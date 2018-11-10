@@ -1,1 +1,1 @@
-Training
+Resources from eCourse
