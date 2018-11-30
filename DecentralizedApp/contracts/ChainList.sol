@@ -2,6 +2,7 @@ pragma solidity ^0.4.18;
 
 contract ChainList
 {
+  address owner;
 
   struct Article {
     uint id;
@@ -20,22 +21,11 @@ contract ChainList
    mapping(uint => Article) public articles;
    uint articleCounter;
 
-  // events
+   // constructor
 
-  event logSellArticle(
-    uint indexed _id,
-    address indexed _seller,
-    string _name,
-    uint256 _price
-    );
-
-  event logBuyArticle(
-    uint indexed _id,
-    address indexed _seller,
-    address indexed _buyer,
-    string _name,
-    uint256 _price
-    );
+   function ChainList() public {
+     owner = msg.sender;
+   }
 
   function sellArticle(
     string _name,
@@ -53,6 +43,14 @@ contract ChainList
       );
 
     logSellArticle(articleCounter, msg.sender, _name, _price);
+  }
+
+  // business logic
+  
+  // deactivate the contract
+  function kill() public onlyOwner
+  {
+    selfdestruct(owner);
   }
 
   function buyArticle(uint _id) payable public
@@ -83,6 +81,8 @@ contract ChainList
     // trigger event to log
     logBuyArticle(_id, article.seller, article.buyer, article.name, article.price);
   }
+
+  // getters and setters
 
   function getNumberOfArticles() public view returns (uint)
   {
@@ -120,4 +120,30 @@ contract ChainList
 
 
   }
+
+  // events
+
+  event logSellArticle(
+    uint indexed _id,
+    address indexed _seller,
+    string _name,
+    uint256 _price
+    );
+
+  event logBuyArticle(
+    uint indexed _id,
+    address indexed _seller,
+    address indexed _buyer,
+    string _name,
+    uint256 _price
+    );
+
+    // function modifier
+
+    modifier onlyOwner()
+    {
+      require(msg.sender == owner);
+      _;  // code of the "function" this modifier is applied to
+    }
+
 }

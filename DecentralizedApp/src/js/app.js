@@ -92,7 +92,7 @@ App = {
        var articlesRow = $('#articlesRow');
        var priceInEther = web3.fromWei(price, "ether");
        var articleTemplate = $('#articleTemplate');
-       articleTemplate.find('.panel-title');
+       articleTemplate.find('.panel-title').text(name);
        articleTemplate.find('.article-description').text(description);
        articleTemplate.find('.article-price').text(priceInEther + " ETH");
        articleTemplate.find('.btn-buy').attr('data-id');
