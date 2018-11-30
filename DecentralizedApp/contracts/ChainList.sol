@@ -1,6 +1,9 @@
 pragma solidity ^0.4.18;
 
-contract ChainList
+import "./Ownable.sol";
+
+// solidity supports multiple inheritance
+contract ChainList is Ownable
 {
   address owner;
 
@@ -23,9 +26,7 @@ contract ChainList
 
    // constructor
 
-   function ChainList() public {
-     owner = msg.sender;
-   }
+   // business logic
 
   function sellArticle(
     string _name,
@@ -43,14 +44,6 @@ contract ChainList
       );
 
     logSellArticle(articleCounter, msg.sender, _name, _price);
-  }
-
-  // business logic
-  
-  // deactivate the contract
-  function kill() public onlyOwner
-  {
-    selfdestruct(owner);
   }
 
   function buyArticle(uint _id) payable public
@@ -121,6 +114,12 @@ contract ChainList
 
   }
 
+  // deactivate the contract
+  function kill() public onlyOwner
+  {
+    selfdestruct(owner);
+  }
+
   // events
 
   event logSellArticle(
@@ -137,13 +136,4 @@ contract ChainList
     string _name,
     uint256 _price
     );
-
-    // function modifier
-
-    modifier onlyOwner()
-    {
-      require(msg.sender == owner);
-      _;  // code of the "function" this modifier is applied to
-    }
-
 }
