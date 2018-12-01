@@ -95,7 +95,7 @@ App = {
        articleTemplate.find('.panel-title').text(name);
        articleTemplate.find('.article-description').text(description);
        articleTemplate.find('.article-price').text(priceInEther + " ETH");
-       articleTemplate.find('.btn-buy').attr('data-id');
+       articleTemplate.find('.btn-buy').attr('data-id',id);
        articleTemplate.find('.btn-buy').attr('data-value', priceInEther);
 
        // check if seller of article is currently connected
