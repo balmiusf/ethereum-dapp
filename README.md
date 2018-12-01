@@ -2,6 +2,13 @@ This repository is for the process of development and deployment of a Decentrali
 
 This repository uses Truffle Framework and Solidity.
 
+## Ganache (local node) 
+
+1. Run Ganache
+2. Deploy using `truffle` (and optional state reset)
+    ```javascript
+    truffle migrate --compile-all --reset --network ganache
+    ```
 
 
 # ChainSkills Truffle Box
