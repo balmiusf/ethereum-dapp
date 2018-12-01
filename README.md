@@ -5,11 +5,19 @@ This repository uses Truffle Framework and Solidity.
 ## Ganache (local node) 
 
 1. Run Ganache
-2. Deploy using `truffle` (and optional state reset)
+2. Deploy using `truffle`, specifying ganache as the network (reset is optional)
     ```javascript
     truffle migrate --compile-all --reset --network ganache
     ```
-
+    Or alternatively.
+    ```javascript
+    truffle console --network ganache
+    ```
+    And within the truffle console execute the following command specifying ganache as the network.  (reset is optional)
+    ```javascript
+    migrate --compile-all --reset --network ganache
+    ```
+    
 
 # ChainSkills Truffle Box
 
