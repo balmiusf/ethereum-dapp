@@ -3950,8 +3950,13 @@
       "events": {},
       "links": {},
       "address": "0x6ee1aab2f43eca8bbc745c8c294e3f9afb8f946e"
+    },
+    "5782": {
+      "events": {},
+      "links": {},
+      "address": "0x6c75da0257b61ca4c0f25eb37d4bcd15b1968e1f"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-12-01T10:50:34.316Z"
+  "updatedAt": "2018-12-01T11:01:24.554Z"
 }
